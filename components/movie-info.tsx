@@ -1,8 +1,8 @@
-import { URL } from "../app/(home)/page";
+import { BASE_URL } from "../app/constants";
 import styles from "../styles/movie-info.module.css"
 
 export async function getInfo(id:string){
-    const response = await fetch(`${URL}/${id}`);
+    const response = await fetch(`${BASE_URL}/${id}`);
     return response.json();
 }
 
