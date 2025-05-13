@@ -1,10 +1,11 @@
 import { Metadata } from "next"
 import Navi from "../components/navi"
+import "../styles/global.css";
 
 export const metadata :Metadata = {
   title: {
     template: "%s | Next Movies",
-    default: "loading"  
+    default: "Next Movie"  
   },
   description: 'movie mopvie',
 }

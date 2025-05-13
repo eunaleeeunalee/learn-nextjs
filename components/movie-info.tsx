@@ -1,12 +1,24 @@
 import { URL } from "../app/(home)/page";
+import styles from "../styles/movie-info.module.css"
 
-async function getInfo(id:string){
+export async function getInfo(id:string){
     const response = await fetch(`${URL}/${id}`);
     return response.json();
 }
 
 export default async function MovieInfo({id}: {id:string}){
-    const info = await getInfo(id);
+    const movie = await getInfo(id);
 
-    return <h4>{JSON.stringify(info)}</h4>
+    return (
+        <div className={styles.container}>
+            <img src={movie.poster_path} className={styles.poster} alt={movie.title}/>
+
+            <div className={styles.info}>
+                <h2 className={styles.title}>{movie.title}</h2>
+                <h3>{movie.vote_average.toFixed(1)}</h3>
+                <p>{movie.overview}</p>
+                <a href={movie.homepage} target={"_blank"}>Homepage &rarr;</a>
+            </div>
+        </div>
+    )
 }
